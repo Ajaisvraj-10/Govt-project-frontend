@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link href="https://fonts.cdnfonts.com/css/gilroy-bold" rel="stylesheet">
+    <style>
+
+#loading-bar-spinner.spinner {
+  left: 50%;
+  margin-left: -20px;
+  top: 50%;
+  margin-top: -20px;
+  position: absolute;
+  z-index: 1!important;
+  -webkit-animation: loading-bar-spinner 400ms linear infinite;
+          animation: loading-bar-spinner 400ms linear infinite;
+}
+
+#loading-bar-spinner.spinner .spinner-icon {
+  width: 40px;
+  height: 40px;
+  border: solid 4px transparent;
+  border-top-color: #000 !important;
+  border-left-color: #000 !important;
+  border-radius: 50%;
+}
+
+@-webkit-keyframes loading-bar-spinner {
+  0% {
+    transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loading-bar-spinner {
+  0% {
+    transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+    </style>
+
+    <title>Lead Finder</title>
+
+
+  </head>
+
+  <body class="" style="margin: 0;
+    padding: 0;
+    box-sizing: border-box;">
+    <noscript>
+      <strong>
+        We're sorry but floragifts doesn't work properly without JavaScript
+        enabled. Please enable it to continue.</strong>
+    </noscript>
+
+
+    <!-- built files will be auto injected -->
+    <!-- <div class="loading_wrap2" id="loading_wrap2"> -->
+    <!-- <div id="loading-bar-spinner" class="spinner"><div class="spinner-icon"></div></div>
+    <img src="/logo.png" width="150px;" style="position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);">
+    </div> -->
+
+    <div id="app"></div>
+
+  </body>
+
+</html>
