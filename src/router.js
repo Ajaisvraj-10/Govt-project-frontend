@@ -26,27 +26,28 @@ const routes = [
      
           {
             path: "",
-            component: () => import("./views/app/pages/home"),
+            component: () => import("./views/app/pages/home.vue"),
           },
          
           
           {
             path: "home",
-            component: () => import("./views/app/pages/home"),
+            component: () => import("./views/app/pages/home.vue"),
           },
           
           {
             path: "sign-in",
-            component: () => import("./views/app/pages/sign-in"),
+            component: () => import("./views/app/pages/sign-in.vue"),
           },
           {
             path: "sample",
-            component: () => import("./views/app/pages/Samples"),
+            component: () => import("./views/app/pages/Samples.vue"),
 
           },
           {
             path: "blogs",
-            component: () => import("./views/app/pages/Blogs"),
+            component: () => import("./views/app/pages/Blogs .vue"),
+
           }
          
           

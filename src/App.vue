@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Blogs from './views/app/pages/Blogs.vue';
+import Blogs from '../src/views/app/pages/Blogs .vue';
 
 
 export default {
