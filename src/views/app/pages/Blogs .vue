@@ -31,14 +31,15 @@
 
         <!-- Tags input while viewing a blog -->
         <div>
-      <label for="selectTag">Select Tags:</label>
-      <select id="selectTag" v-model="selectedTag">
-        <option value="" disabled>Select a tag</option>
-        <option v-for="tag in tags" :key="tag.id" :value="tag.id">{{ tag.name }}</option>
-      </select>
-      <button @click="addSelectedTag()">Add Tag</button>
-    </div>
-    
+          <span
+            v-for="tag in blog.tag_names"
+            :key="tag"
+            class="tag"
+           
+          >
+            {{ tag }}
+          </span>
+        </div>
 
         <!-- Edit and Delete buttons -->
         <div>
@@ -81,8 +82,7 @@
 
         <div class="form-group">
           <label for="blogImage">Image:</label>
-          <input type="file" @change="onFileChange">
-
+          <input type="file" @change="onFileChange" />
         </div>
 
         <div class="form-group">
@@ -98,8 +98,7 @@
               v-for="category in categories"
               :key="category.id"
               :value="category.id"
-              >{{ category.name }}</option
-            >
+            >{{ category.name }}</option>
           </select>
         </div>
         <div class="form-group">
@@ -115,17 +114,24 @@
 
         <!-- Tags input -->
         <div>
-      <label for="selectTag">Select Tags:</label>
-      <select id="selectTag" v-model="selectedTag">
-        <option value="" disabled>Select a tag</option>
-        <option v-for="tag in tags" :key="tag.id" :value="tag.id">{{ tag.name }}</option>
-      </select>
-      <button @click="addSelectedTag()">Add Tag</button>
-    </div>
+  <label>Select Tags:</label>
+  <div v-for="tag in tags" :key="tag.id">
+    <input
+      type="checkbox"
+      :id="'tagCheckbox_' + tag.id"
+      :value="tag.id"
+      v-model="selectedTags"
+      name="tags"
+    />
+    <label :for="'tagCheckbox_' + tag.id">{{ tag.name }}</label>
+  </div>
+</div>
+
       </form>
     </b-modal>
   </div>
 </template>
+
 
 <script>
 import axios from "axios";
@@ -145,14 +151,14 @@ export default {
     image: null,
     category: null,
     created_at: null,
-  },
+    tags: [], 
+},
   showModal: false,
   editingBlog: false,
   selectedFile: null,
   tags: [],
-  selectedTag: [], // Change this line to initialize as an empty array
-};
-
+  selectedTags: [], 
+};  
   },
   mounted() {
     this.fetchBlogs();
@@ -206,64 +212,66 @@ export default {
         });
       }
     },
+
     addSelectedTag() {
-  if (!this.selectedTag) {
-    return;
-  }
+      if (!this.selectedTag) {
+        return;
+      }
 
-  const tagToAdd = this.tags.find((tag) => tag.id === this.selectedTag);
-  if (tagToAdd && !this.newBlog.tags.some((tag) => tag.id === tagToAdd.id)) {
-    this.newBlog.tags.push(tagToAdd);
-    this.selectedTag = null;
-  }
-},
+      const tagToAdd = this.tags.find((tag) => tag.id === this.selectedTag);
+      if (tagToAdd && !this.newBlog.tags.some((tag) => tag.id === tagToAdd.id)) {
+        this.newBlog.tags.push(tagToAdd.id);
+        this.selectedTag = null;
+      }
+    },
 
 
-  async fetchTags() {
+    async fetchTags() {
   try {
     const response = await axios.get("http://127.0.0.1:8000/tags/");
     this.tags = response.data;
+    console.log("Fetched tags:", this.tags); // Add this line
   } catch (error) {
     console.error("Error fetching tags:", error);
   }
 },
+
+
     showAddConfirmation() {
       if (window.confirm("Are you sure you want to add this blog?")) {
         this.addBlog();
       }
     },
     async addBlog() {
-  if (!this.selectedFile) {
-    alert("Please select an image.");
-    return;
-  }
+      if (!this.selectedFile) {
+        alert("Please select an image.");
+        return;
+      }
 
-  const tagIds = this.newBlog.tags.map((tag) => tag.id);
-  const formData = new FormData();
-  formData.append("name", this.newBlog.name);
-  formData.append("description", this.newBlog.description);
-  formData.append("image", this.selectedFile);
-  formData.append("category", this.newBlog.category);
-  formData.append("created_at", this.newBlog.created_at);
+      const formData = new FormData();
+      formData.append("name", this.newBlog.name);
+      formData.append("description", this.newBlog.description);
+      formData.append("image", this.selectedFile);
+      formData.append("category", this.newBlog.category);
+      formData.append("created_at", this.newBlog.created_at);
+      this.selectedTags.forEach(tagId => {
+        formData.append("tags", tagId);
+      });
 
-  // Append each tag ID separately
-  tagIds.forEach((tagId) => {
-    formData.append("tags", tagId);
-  });
+      try {
+        const response = await axios.post("http://127.0.0.1:8000/blogs/", formData);
+        if (response.data.id > 0) {
+          this.filteredBlogs.push(response.data);
+          this.resetNewBlog();
+          this.showModal = false;
+        } else {
+          alert("Something went wrong while adding the blog.");
+        }
+      } catch (error) {
+        console.error("Error adding blog:", error);
+      }
+    },
 
-  try {
-    const response = await axios.post("http://127.0.0.1:8000/blogs/", formData);
-    if (response.data.id > 0) {
-      this.filteredBlogs.push(response.data);
-      this.resetNewBlog();
-      this.showModal = false;
-    } else {
-      alert("Something went wrong while adding the blog.");
-    }
-  } catch (error) {
-    console.error("Error adding blog:", error);
-  }
-},
 
 
 async editBlog(blog) {
@@ -274,6 +282,8 @@ async editBlog(blog) {
     const editedBlog = response.data;
     this.editingBlog = true;
     this.showModal = true;
+    this.newBlog.tags = editedBlog.tags.map((tag) => tag.id);
+
     this.newBlog = {
       id: editedBlog.id,
       name: editedBlog.name,
@@ -281,7 +291,7 @@ async editBlog(blog) {
       image: null,
       category: editedBlog.category.id,
       created_at: editedBlog.created_at,
-      tags: editedBlog.tags || [], // Set tags to an empty array if not provided
+      tags: editedBlog.tags || [], 
     };
   } catch (error) {
     console.error("Error fetching blog for editing:", error);
@@ -289,30 +299,22 @@ async editBlog(blog) {
 },
 
 async updateBlog() {
-  const tagIds = this.newBlog.tags.map((tag) => tag.id); // Get tag IDs
-  const formData = new FormData(document.getElementById('formgrp'));
+      const formData = new FormData(document.getElementById("formgrp"));
+      this.newBlog.tags.forEach((tagId) => {
+        formData.append("tags", tagId);
+      });
 
-  // Remove this line since we will append tags individually
-  // formData.append('tags', JSON.stringify(tagIds));
-
-  // Append each tag ID separately
-  tagIds.forEach((tagId) => {
-    formData.append('tags', tagId);
-  });
-
-  try {
-    const response = await axios.put(`http://127.0.0.1:8000/blogs/${this.newBlog.id}/`, formData);
-
-    // Update the edited blog in the filteredBlogs array
-    const updatedBlog = response.data;
-    const index = this.filteredBlogs.findIndex((blog) => blog.id === updatedBlog.id);
-    if (index !== -1) {
-      this.filteredBlogs[index] = updatedBlog;
-    }
-  } catch (error) {
-    console.error('Error updating blog:', error);
-  }
-},
+      try {
+        const response = await axios.put(`http://127.0.0.1:8000/blogs/${this.newBlog.id}/`, formData);
+        if (response.status === 200) {
+          // Handle success
+        } else {
+          // Handle error
+        }
+      } catch (error) {
+        console.error('Error updating blog:', error);
+      }
+    },
 
 
 
