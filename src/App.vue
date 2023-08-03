@@ -1,18 +1,21 @@
 <template>
      <div>
+      <Nav/>
     <router-view/>
-    <Blogs/>
+    <Login/>
   </div>
  
 </template>
 
 <script>
-import Blogs from '../src/views/app/pages/Blogs .vue';
+import Login from '../src/views/app/pages/Login.vue';
+import Nav from './views/app/pages/Nav.vue';
 
 
 export default {
   components: {
-    Blogs
+    Login,
+    Nav
   },
   name: 'App',
 

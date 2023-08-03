@@ -20,20 +20,20 @@ const routes = [
       // pages
       {
         path: "/",
-        component: () => import("./views/app/pages"),
-        redirect: "/",
+        component: () => import("./views/app/pages/Home.vue"),
+        redirect: "login",
         children: [
      
-          {
-            path: "",
-            component: () => import("./views/app/pages/home.vue"),
-          },
+          // {
+          //   path: "",
+          //   component: () => import("./views/app/pages/"),
+          // },
          
           
-          {
-            path: "home",
-            component: () => import("./views/app/pages/home.vue"),
-          },
+          // {
+          //   path: "/home",
+          //   component: () => import("./views/app/pages/Home.vue"),
+          // },
           
           {
             path: "sign-in",
@@ -48,7 +48,26 @@ const routes = [
             path: "blogs",
             component: () => import("./views/app/pages/Blogs .vue"),
 
-          }
+          },
+          {
+            path: "login",
+            component: () => import("./views/app/pages/Login.vue"),
+
+          },
+          {
+            path: "/home",
+            component: () => import("./views/app/pages/Home.vue"),
+          },
+          {
+            path: "/nav",
+            component: () => import("./views/app/pages/Nav.vue"),
+          },
+          {
+            path: "/fpos",
+            name  : 'Fpo',
+            component: () => import("./views/app/pages/Fpo.vue"),
+          },
+          
          
           
           
