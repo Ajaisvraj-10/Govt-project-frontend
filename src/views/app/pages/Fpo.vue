@@ -1,13 +1,13 @@
 <template>
-    <div class="fpo-page">
-      <h1>FPO Page</h1>
-      <ul>
-        <li v-for="fpo in fpos" :key="fpo.id">
-          {{ fpo.name }}
-        </li>
-      </ul>
-    </div>
-  </template>
+  <div class="fpo-page">
+    <h1 class="page-title">FPO Page</h1>
+    <ul class="fpo-list">
+      <li v-for="fpo in fpos" :key="fpo.id" class="fpo-item">
+        {{ fpo.name }}
+      </li>
+    </ul>
+  </div>
+</template>
   
   <script>
   import axios from 'axios';
@@ -30,7 +30,33 @@
   };
   </script>
   
-  <style scoped>
-  /* Add your styling for the FPO page here */
-  </style>
+  <style>
+  .fpo-page {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
   
+  .page-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .fpo-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .fpo-item {
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    cursor: pointer;
+  }
+  
+  .fpo-item:hover {
+    background-color: #e0e0e0;
+  }
+  </style>

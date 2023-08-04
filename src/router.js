@@ -20,14 +20,14 @@ const routes = [
       // pages
       {
         path: "/",
-        component: () => import("./views/app/pages/Home.vue"),
+        component: () => import("./views/app/pages"),
         redirect: "login",
         children: [
      
-          // {
-          //   path: "",
-          //   component: () => import("./views/app/pages/"),
-          // },
+          {
+            path: "",
+            component: () => import("./views/app/pages/Home"),
+          },
          
           
           // {
@@ -37,35 +37,55 @@ const routes = [
           
           {
             path: "sign-in",
-            component: () => import("./views/app/pages/sign-in.vue"),
+            component: () => import("./views/app/pages/sign-in"),
           },
           {
             path: "sample",
-            component: () => import("./views/app/pages/Samples.vue"),
+            component: () => import("./views/app/pages/Samples"),
 
           },
-          {
-            path: "blogs",
-            component: () => import("./views/app/pages/Blogs .vue"),
+          // {
+          //   path: "blogs",
+          //   component: () => import("./views/app/pages/Blogs"),
 
-          },
+          // },
           {
             path: "login",
-            component: () => import("./views/app/pages/Login.vue"),
+            component: () => import("./views/app/pages/Login"),
 
           },
           {
-            path: "/home",
-            component: () => import("./views/app/pages/Home.vue"),
+            path: "home",
+            component: () => import("./views/app/pages/Home"),
           },
+          // {
+          //   path: "nav",
+          //   component: () => import("./views/app/pages/Nav"),
+          // },
           {
-            path: "/nav",
-            component: () => import("./views/app/pages/Nav.vue"),
-          },
-          {
-            path: "/fpos",
+            path: "fpos",
             name  : 'Fpo',
-            component: () => import("./views/app/pages/Fpo.vue"),
+            component: () => import("./views/app/pages/Fpo"),
+          },
+          {
+            path: "aeos",
+            name  : 'Aeo',
+            component: () => import("./views/app/pages/Aeo"),
+          },
+          {
+            path: "ics",
+            name  : 'Ics',
+            component: () => import("./views/app/pages/Ics"),
+          },
+          {
+            path: "vfcs",
+            name  : 'Vfc',
+            component: () => import("./views/app/pages/Vfc"),
+          },
+          {
+            path: "farmers",
+            name  : 'Farmers',
+            component: () => import("./views/app/pages/Farmers"),
           },
           
          

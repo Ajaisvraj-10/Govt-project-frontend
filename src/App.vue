@@ -1,10 +1,9 @@
 <template>
-     <div>
-      <Nav/>
-    <router-view/>
-    <Login/>
-  </div>
- 
+    <div>
+      <Nav></Nav>
+      <!-- <Login></Login> -->
+      <router-view></router-view>
+    </div>
 </template>
 
 <script>
@@ -15,8 +14,8 @@ import Nav from './views/app/pages/Nav.vue';
 export default {
   components: {
     Login,
-    Nav
-  },
+    Nav,
+},
   name: 'App',
 
   data: () => ({
