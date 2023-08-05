@@ -87,6 +87,11 @@ const routes = [
             name  : 'Farmers',
             component: () => import("./views/app/pages/Farmers"),
           },
+          {
+            path: "netflix",
+            name  : 'Netflix',
+            component: () => import("./views/app/pages/Netflix"),
+          },
           
          
           

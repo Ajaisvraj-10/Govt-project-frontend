@@ -3,50 +3,50 @@
       <h1>VFC</h1>
       <form @submit.prevent="addVFC">
         <label for="name">Name:</label>
-        <input type="text" id="name" v-model="name" required>
+        <input type="text" id="name" v-model="name">
         <br><br>
         <label for="fpo">FPO:</label>
-        <select id="fpo" v-model="fpo" required>
+        <select id="fpo" name="fpo" v-model="fpo">
           <option v-for="fpo in fpoList" :key="fpo.id" :value="fpo.id">{{ fpo.name }}</option>
         </select>
         <br><br>
         <label for="ics">ICS:</label>
-        <select id="ics" v-model="selectedICS" multiple required>
-          <option v-for="ics in icsList" :key="ics.id" :value="ics.id">{{ ics.name }}</option>
-        </select>
+      <select id="ics" name="ics" v-model="ics" multiple required>
+        <option v-for="icsItem in icsList" :value="icsItem.id" :key="icsItem.id">{{ icsItem.name }}</option>
+      </select>
         <br><br>
         <label for="aeo">AEO:</label>
-        <select id="aeo" v-model="aeo" required>
+        <select id="aeo" name="aeo" v-model="aeo">
           <option v-for="aeoItem in aeos" :key="aeoItem.id" :value="aeoItem.id">{{ aeoItem.name }}</option>
         </select>
         <br><br>
         <label for="country">Country:</label>
-        <input type="text" id="country" v-model="location.country">
-        <br><br>
-        <label for="state">State:</label>
-        <input type="text" id="state" v-model="location.state">
-        <br><br>
-        <label for="district">District:</label>
-        <input type="text" id="district" v-model="location.district">
-        <br><br>
-        <label for="panchayats">Panchayats:</label>
-        <input type="text" id="panchayats" v-model="location.panchayats">
-        <br><br>
-        <label for="revenue_village">Revenue Village:</label>
-        <input type="text" id="revenue_village" v-model="location.revenue_village">
-        <br><br>
-        <label for="local_village">Local Village:</label>
-        <input type="text" id="local_village" v-model="location.local_village">
-        <br><br>
+<input type="text" id="country" name="country" v-model="location.country">
+<br><br>
+<label for="state">State:</label>
+<input type="text" id="state" name="state" v-model="location.state">
+<br><br>
+<label for="district">District:</label>
+<input type="text" id="district" name="district" v-model="location.district">
+<br><br>
+<label for="panchayats">Panchayats:</label>
+<input type="text" id="panchayats" name="panchayats" v-model="location.panchayats">
+<br><br>
+<label for="revenue_village">Revenue Village:</label>
+<input type="text" id="revenue_village" name="revenue_village" v-model="location.revenue_village">
+<br><br>
+<label for="local_village">Local Village:</label>
+<input type="text" id="local_village" name="local_village" v-model="location.local_village">
+<br><br>
         <button type="submit">Add VFC</button>
       </form>
       <div v-for="vfc in vfcList" :key="vfc.id" class="vfc-item">
         <h2>{{ vfc.name }}</h2>
-        <p>FPO: {{ vfc.fpo.name }}</p>
-        <p>ICS: {{ getSelectedICS(vfc.ics) }}</p>
-        <p>AEO: {{ getSelectedAEO(vfc.aeo) }}</p>
-        <p>Location: {{ getLocationString(vfc.location) }}</p>
-      </div>
+      <p>FPO: {{ vfc.fpo.name }}</p>
+      <p>Location: {{ getLocationString(vfc.location) }}</p>
+      <p>ICS: {{ getSelectedICS(vfc.ics) }}</p>
+      <p>AEO: {{ getSelectedAEO(vfc.aeo) }}</p>
+    </div>
     </div>
   </template>   
   
@@ -59,16 +59,16 @@
     return {
       name: '',
       fpo: '',
-      selectedICS: [], 
       aeo: '',
+      ics: [],
       location: {
-        country: '',
-        state: '',
-        district: '',
-        panchayats: '',
-        revenue_village: '',
-        local_village: '',
-      },
+      country: '',
+      state: '',
+      district: '',
+      panchayats: '',
+      revenue_village: '',
+      local_village: '',
+    },
       fpoList: [],
       icsList: [],
       vfcList: [],
@@ -103,7 +103,7 @@
       async fetchAEOData() {
   try {
     const response = await axios.get('http://127.0.0.1:8000/api/aeos/');
-    this.aeos = response.data; // Corrected this line
+    this.aeos = response.data; 
   } catch (error) {
     console.error('Error fetching AEO data:', error);
   }
@@ -116,35 +116,42 @@
     } catch (error) {
         console.error('Error fetching ICS data:', error);
     }
-    },
-    addVFC() {
-      const selectedICS = this.selectedICS.map(icsId => ({ id: icsId }));
-      
-      axios.post('http://127.0.0.1:8000/api/vfcs/', {
-        name: this.name,
-        fpo: this.fpo,
-        ics: selectedICS,
-        aeo: this.aeo,
-        location: this.location,
-        // Add other fields from your VFC model here
-      })
-      .then(response => {
-        // Clear form fields and fetch updated data
-        this.clearFormFields();
-        this.fetchVFCData();
-      })
-      .catch(error => {
-        console.error('Error adding VFC:', error);
-        // Handle error
-      });
-    },
+    },  
+    async addVFC() {
+  try {
+    const requestData = {
+      name: this.name,
+      fpo: this.fpo,
+      ics: [...this.ics], // Clone the array
+      aeo: this.aeo,
+      location: {
+        country: this.location.country,
+        state: this.location.state,
+        district: this.location.district,
+        local_village: this.location.local_village,
+        panchayats: this.location.panchayats,
+        revenue_village: this.location.revenue_village,
+      },
+      // ... other fields ...
+    };
+
+    const response = await axios.post('http://127.0.0.1:8000/api/vfcs/', requestData);
+
+    // ... handle response ...
+
+  } catch (error) {
+    console.error(error);
+  }
+},
+
 
 
 
     getSelectedICS(icsIds) {
-      const selectedICS = this.icsList.filter(ics => icsIds.includes(ics.id));
-      return selectedICS.map(ics => ics.name).join(', ');
-    },
+      const selectedICS = this.icsList.filter(item => icsIds.includes(item));
+      return selectedICS.map(item => item.name).join(', ');
+},
+
 
     getSelectedAEO(aeoId) {
       const selectedAEO = this.aeos.find(item => item.id === aeoId);
