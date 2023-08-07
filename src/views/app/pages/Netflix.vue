@@ -113,29 +113,29 @@
                 <div class="footer_div_main">
                     <div class="footer_div">
                         <footer class="footer">
-    Questions? Call 000-800-919-1694
-    <br>
-    <a href="#">FAQ</a>
-    <a href="#">Help Centre</a>
-    <a href="#">Account</a>
-    <a href="#">Media Centre</a>
-    <a href="#">Investor Relations</a>
-    <a href="#">Jobs</a>
-    <a href="#">Ways to Watch</a>
-    <a href="#">Terms of Use</a>
-    <a href="#">Privacy</a>
-    <a href="#">Cookie Preferences</a>
-    <a href="#">Corporate Information</a>
-    <a href="#">Contact Us</a>
-    <a href="#">Speed Test</a>
-    <a href="#">Legal Notices</a>
-    <br>
-    Only on Netflix
-    <br>
-    <a href="#">English</a>
-    <br>
-    Netflix India
-  </footer>
+                            Questions? Call 000-800-919-1694
+                            <br>
+                            <a href="#">FAQ</a>
+                            <a href="#">Help Centre</a>
+                            <a href="#">Account</a>
+                            <a href="#">Media Centre</a>
+                            <a href="#">Investor Relations</a>
+                            <a href="#">Jobs</a>
+                            <a href="#">Ways to Watch</a>
+                            <a href="#">Terms of Use</a>
+                            <a href="#">Privacy</a>
+                            <a href="#">Cookie Preferences</a>
+                            <a href="#">Corporate Information</a>
+                            <a href="#">Contact Us</a>
+                            <a href="#">Speed Test</a>
+                            <a href="#">Legal Notices</a>
+                            <br>
+                            Only on Netflix
+                            <br>
+                            <a href="#">English</a>
+                            <br>
+                            Netflix India
+                        </footer>
                         
                     </div>
 
@@ -493,20 +493,24 @@ export default{
 .footer_div{
     margin-top: 100px;
     margin-left: -125px;
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     height: 215px;
     width: 1520px;
 }
 .footer {
-      background-color: #050000;
-      color: #000000;
+      background-color: #000000;
+      color: #fcfcfc;
       padding: 20px 0;
       text-align: center;
       font-size: 14px;
     }
+    .footer {
+    background-color: #000000;
+    padding-top: 80px;
+}
 
     .footer a {
-      color: #000000;
+      color: #ffffff;
       text-decoration: none;
       margin: 0 10px;
     }
