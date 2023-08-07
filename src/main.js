@@ -11,6 +11,7 @@ import store from "./store";
 
 
 import Breadcumb from "./components/breadcumb";
+import MovieModel from "./components/MovieModel"
 import firebase from "firebase/app";
 import "firebase/auth";
 import {firebaseSettings} from "@/data/config";
@@ -26,6 +27,7 @@ import './config.js'
 Vue.component('VueFontawesome', require('vue-fontawesome-icon/VueFontawesome.vue').default);
 
 Vue.component("breadcumb", Breadcumb);
+Vue.component("MovieModel", MovieModel);
 import InstantSearch from 'vue-instantsearch';
 // Vue.use(VueRouter);
  

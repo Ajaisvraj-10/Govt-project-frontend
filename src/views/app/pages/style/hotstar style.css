@@ -1,0 +1,107 @@
+.first_div_main{
+    background-color: black;
+    height: 285px;
+    width: auto;
+
+}
+.first_div{
+
+}
+.logo{
+    margin-top: 25px;
+    margin-left: 25px;
+    height: 45px;
+    width: 55px;
+}
+.btnsub{
+    margin-left: 10px;
+    margin-top: 15px;
+}
+.clckbut{
+    background-color: #b6b63a66;
+    height: 25px;
+    width: 85px;
+    color: #d1d129;
+    border-radius: 25px;
+}
+.inner-div{
+    margin-top: -100px;
+    margin-left: 100px;
+    
+}
+.inner-poster{
+    border-radius: 10px;
+    margin-left: 25px;
+    margin-top: 3px;
+    height: 260px;
+    width: 575px;
+    z-index: 1;
+}
+.scnd-nav{
+    margin-top: -260px;
+    margin-left: 594px;
+    background-color: #a7a5a421;
+    height: 260px;
+    width: 755px;
+}
+.scnd_poster{
+    height: 50px;
+    margin-top: 43px;
+    margin-left: 35px;
+}
+.scnd_txt{
+    margin-top: -39px;
+    margin-left: 95px;
+    font-size: large;
+    color: white;
+    font-weight: 700;
+
+}
+.scnd_txt2{
+    margin-top: 10px;
+    color: white;
+    font-size: medium;
+    margin-left: 95px;
+    font-weight: 100; 
+}
+.maincls{
+    margin-top: 75px;
+    margin-left: 40px;
+}
+.lstbtn{
+    border-block-style: unset;
+    font-weight: 700;
+    font-size: x-large;
+    border-radius: 10px;
+    background-color: #4e4b4f;
+    height: 50px;
+    width: 220px;
+    color: white;
+    font-family: 'Nunito';
+}
+.main-poster{
+    margin-top: -711px;
+}
+.trailer-link{
+    font-weight: 700;
+    font-size: large;
+    font-family: inherit;
+    border-radius: 11px;
+    color: white;
+    background-color: black;
+    width: 150px;
+    height: 50px;
+}
+.trailer-div{
+    margin-left: 1120px;
+    margin-top: -375px;
+}
+.pster-div{
+    color: black;
+    margin-left: 507px;
+    margin-top: -25px;
+}
+.pster-txt{
+    font-weight: 700;
+    font-size: x-large;
+}

@@ -4,8 +4,11 @@ import store from "./store";
 import Router from "vue-router";
 import NProgress from "nprogress";
 // import authenticate from "./auth/authenticate";
-
+import MovieModal from '../src/components/MovieModel'
 Vue.use(Router);
+
+
+
 
 // create new router
 
@@ -92,6 +95,16 @@ const routes = [
             name  : 'Netflix',
             component: () => import("./views/app/pages/Netflix"),
           },
+          {
+            path: "hotstar",
+            name  : 'Hotstar',
+            component: () => import("./views/app/pages/Hotstar"),
+          },
+          // {
+          //   path: "moviemodal",
+          //   name  : 'MovieModal',
+          //   component: () => import("../src/components/MovieNodal"),
+          // },
           
          
           

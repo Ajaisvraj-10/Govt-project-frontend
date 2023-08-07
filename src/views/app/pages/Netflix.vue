@@ -244,12 +244,12 @@ export default{
     width: 130px;
     height: 35px;
 }
-.scnd_div{
+/* .scnd_div{
     margin-left: -125px;
     background-color: black;
     height: 600px;
     width: 1520px;
-}
+} */
 .scnd_div_main {
     margin-top: 713px;
 
@@ -499,7 +499,7 @@ export default{
 }
 .footer {
       background-color: #000000;
-      color: #fcfcfc;
+      color: #000000;
       padding: 20px 0;
       text-align: center;
       font-size: 14px;
@@ -510,7 +510,7 @@ export default{
 }
 
     .footer a {
-      color: #ffffff;
+      color: #000000;
       text-decoration: none;
       margin: 0 10px;
     }
