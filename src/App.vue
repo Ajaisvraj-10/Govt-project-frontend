@@ -2,7 +2,7 @@
     <div>
       <!-- <Hotstar /> -->
     <!-- <Netflix /> -->
-      <!-- <Nav></Nav> -->
+      <Nav></Nav>
       <!-- <Login></Login> -->
       <router-view></router-view>
     </div>

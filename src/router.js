@@ -31,7 +31,7 @@ const routes = [
      
           {
             path: "",
-            component: () => import("./views/app/pages/Hotstar"),
+            component: () => import("./views/app/pages/Home"),
           },
          
           
@@ -97,15 +97,25 @@ const routes = [
             name  : 'Netflix',
             component: () => import("./views/app/pages/Netflix"),
           },
-          // {
-          //   path: "hotstar",
-          //   name  : 'Hotstar',
-          //   component: () => import("./views/app/pages/Hotstar"),
-          // },
+          {
+            path: "hotstar",
+            name  : 'Hotstar',
+            component: () => import("./views/app/pages/Hotstar"),
+          },
           {
             path: "/movie/:id?",
             name  : 'Moviedetails',
             component: () => import("./views/app/pages/Moviedetails"),
+          },
+          {
+            path: "category",
+            name  : 'Category',
+            component: () => import("./views/app/pages/Category"),
+          },
+          {
+            path: "product",
+            name  : 'Products',
+            component: () => import("./views/app/pages/Products"),
           },
           
          

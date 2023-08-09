@@ -5,6 +5,8 @@
       <router-link to="/ics">ICS</router-link>
       <router-link to="/vfcs">VFC</router-link>
       <router-link to="/farmers">Farmers</router-link>
+      <router-link to="/category">Category</router-link>
+      <router-link to="/product">Product</router-link>
     </nav>
   </template>
   
@@ -32,5 +34,8 @@
   .router-link:hover {
     background-color: #ffffff;
   }
+.navbar :hover {
+  color: white;
+}
   </style>
   
