@@ -459,18 +459,18 @@ export default{
     color: white;
     padding-left: 57px;
 }
-.getstarted{
+/* .getstarted{
 
-}
+} */
 .forh3{
     padding-top: 50px;
     padding-left: 231px;
     width: 980px;
     color: white;
 }
-.email2{
+/* .email2{
 
-}
+} */
 .getaddress{
     background-color: #51574659;
     margin-left: 263px;
@@ -490,24 +490,12 @@ export default{
 .btnget{
     margin-top: -52px;
 }
-.footer_div{
+/* .footer_div{
     margin-top: 100px;
     margin-left: -125px;
     background-color: rgb(0, 0, 0);
     height: 215px;
     width: 1520px;
-}
-.footer {
-      background-color: #000000;
-      color: #000000;
-      padding: 20px 0;
-      text-align: center;
-      font-size: 14px;
-    }
-    .footer {
-    background-color: #000000;
-    padding-top: 80px;
-}
 
     .footer a {
       color: #000000;
@@ -517,5 +505,5 @@ export default{
 
     .footer a:hover {
       color: #e50914;
-    }
+    } */
 </style>

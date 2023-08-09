@@ -4,9 +4,7 @@
     width: auto;
 
 }
-.first_div{
 
-}
 .logo{
     margin-top: 25px;
     margin-left: 25px;
@@ -91,10 +89,12 @@
     background-color: black;
     width: 150px;
     height: 50px;
+    cursor: pointer;
+
 }
 .trailer-div{
-    margin-left: 1120px;
-    margin-top: -375px;
+    margin-left: 170px;
+    margin-top: -245px;
 }
 .pster-div{
     color: black;
@@ -105,3 +105,225 @@
     font-weight: 700;
     font-size: x-large;
 }
+.trndin{
+    margin-left: -170px;
+}
+.trnd{
+    font-weight: 800;
+    font-size: x-large;
+    margin-left: -290px;
+    margin-top: -20px;
+    color: black;
+}
+.third_div_main{
+    margin-top: 50px;
+
+}
+.thrd-main{
+    height: 710px;
+    background-color: black;
+}
+.movie-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 72px;
+
+  }
+  .movie-poster{
+    margin-top: 15px;
+    height: 345px;
+    border-radius: 10px;
+
+
+  }
+.movie-card{
+    margin-left: 65px;
+    margin-top: -55px;
+
+}
+.most-viewed {
+    margin-top: 20px;
+  }
+  
+  .poster-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  .movie-poster2 {
+    flex: 0 0 calc(25% - 10px);
+    max-width: calc(25% - 10px);
+    text-align: center;
+    margin-right: 10px;
+  }
+  
+  .movie-poster img {
+    max-width: 100%;
+  }
+.fourth_div_main{
+    margin-top: -20px;
+    width: 1520px;
+    background-color: black;
+
+}
+.fourth-main{
+    background-color: black;
+    height: 605px;
+    width: 1035px;
+}
+.mst-view-prt{
+    border-radius: 7px;
+    width: 235px;
+    height: 330px;
+}
+.movie_title{
+    font-weight: 700;
+    font-size: x-large;
+    color: white;
+    margin-left: 100px;
+}
+.fifth_div_main{
+    margin-top: 85px;
+    width: 1520px;
+    background-color: black;
+
+}
+.fifth-main{
+    background-color: black;
+    height: 605px;
+    width: 1035px;
+}
+.most-viewed2{
+    margin-top: -225px;
+
+}
+.poster-row2{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.movie-poster3{
+    flex: 0 0 calc(25% - 10px);
+    max-width: calc(25% - 10px);
+    text-align: center;
+    margin-right: 10px;
+
+}
+mst-view-prt2{
+    border-radius: 7px;
+    width: 235px;
+    height: 330px;
+}
+.footer {
+    background-color: #000000;
+    color: rgb(0, 0, 0);
+    padding: 20px 0;
+  }
+  
+  .footer-content {
+    color: rgb(0, 0, 0);
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: #ffffff;
+  }
+  
+  .footer-section {
+    flex-basis: calc(33.33% - 20px);
+    padding: 0 10px;
+    color: rgb(0, 0, 0);
+  }
+  
+  .footer-section h3 {
+    color: rgb(0, 0, 0);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .footer-section p {
+    color: rgb(0, 0, 0);
+    margin: 5px 0;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .footer-section a:hover {
+    color: #fca311;
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .ironman-main-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+  }
+  
+  .ironman-div {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+  }
+  
+  .ironman {
+    max-width: 100%;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .iman-pster {
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  .iman-btn {
+    background-color: #d81b60;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .iman-btn:hover {
+    background-color: #c2185b;
+  }
+  
+  .details-section {
+    margin-top: 20px;
+  }
+  
+  .drct, .drct5, .drct2, .drct3, .drct4 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .actor-list {
+    list-style-type: square;
+    margin-left: 20px;
+    padding: 0;
+  }
+  
+  .actor-list li {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }

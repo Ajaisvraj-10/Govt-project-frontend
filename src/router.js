@@ -3,9 +3,11 @@ import store from "./store";
 // import {isMobile} from "mobile-device-detect";
 import Router from "vue-router";
 import NProgress from "nprogress";
+import Moviedetails from "./views/app/pages/Moviedetails.vue"
+import Hotstar from "./views/app/pages/Hotstar.vue"
 // import authenticate from "./auth/authenticate";
-import MovieModal from '../src/components/MovieModel'
 Vue.use(Router);
+
 
 
 
@@ -29,7 +31,7 @@ const routes = [
      
           {
             path: "",
-            component: () => import("./views/app/pages/Home"),
+            component: () => import("./views/app/pages/Hotstar"),
           },
          
           
@@ -95,16 +97,16 @@ const routes = [
             name  : 'Netflix',
             component: () => import("./views/app/pages/Netflix"),
           },
-          {
-            path: "hotstar",
-            name  : 'Hotstar',
-            component: () => import("./views/app/pages/Hotstar"),
-          },
           // {
-          //   path: "moviemodal",
-          //   name  : 'MovieModal',
-          //   component: () => import("../src/components/MovieNodal"),
+          //   path: "hotstar",
+          //   name  : 'Hotstar',
+          //   component: () => import("./views/app/pages/Hotstar"),
           // },
+          {
+            path: "/movie/:id?",
+            name  : 'Moviedetails',
+            component: () => import("./views/app/pages/Moviedetails"),
+          },
           
          
           

@@ -1,6 +1,5 @@
 <template>
     <div>
-      <MovieModal />
       <!-- <Hotstar /> -->
     <!-- <Netflix /> -->
       <!-- <Nav></Nav> -->
@@ -14,7 +13,6 @@ import Login from '../src/views/app/pages/Login.vue';
 import Nav from './views/app/pages/Nav.vue';
 import Netflix from './views/app/pages/Netflix.vue';
 import Hotstar from './views/app/pages/Hotstar.vue';
-import MovieModal from './components/MovieModel.vue'
 
 
 
@@ -24,7 +22,6 @@ export default {
     Nav,
     Netflix,
     Hotstar,
-    MovieModal,
 },
   name: 'App',
 
