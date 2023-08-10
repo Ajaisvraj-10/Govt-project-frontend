@@ -7,6 +7,8 @@
       <router-link to="/farmers">Farmers</router-link>
       <router-link to="/category">Category</router-link>
       <router-link to="/product">Product</router-link>
+      <router-link to="/plants">Plants</router-link>
+   
     </nav>
   </template>
   

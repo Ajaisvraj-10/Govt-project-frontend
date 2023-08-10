@@ -5,6 +5,7 @@ import Router from "vue-router";
 import NProgress from "nprogress";
 import Moviedetails from "./views/app/pages/Moviedetails.vue"
 import Hotstar from "./views/app/pages/Hotstar.vue"
+import Addstock from "./views/app/pages/Addstock"
 // import authenticate from "./auth/authenticate";
 Vue.use(Router);
 
@@ -117,6 +118,18 @@ const routes = [
             name  : 'Products',
             component: () => import("./views/app/pages/Products"),
           },
+          {
+            path: "plants",
+            name  : 'Plants',
+            component: () => import("./views/app/pages/Plants"),
+          },
+          {
+            path: "addstock_farmers",
+            name  : 'Addstock',
+            component: () => import("./views/app/pages/Addstock"),
+          },
+         
+        
           
          
           

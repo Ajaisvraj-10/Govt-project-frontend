@@ -1,36 +1,37 @@
 <template>
-    <div>
-      <h1>Add Product</h1>
-      <form @submit.prevent="addProduct">
-        <label for="name">Product Name:</label>
-        <input type="text" id="name" v-model="productName"  />
-  
-        <label for="category">Category:</label>
-        <select id="category" v-model="selectedCategory" >
-          <option v-for="category in categories" :key="category.id" :value="category.id">{{ category.name }}</option>
-        </select>
-  
-        <label for="product_type">Product Type:</label>
-        <select id="product_type" v-model="selectedType" >
-          <option v-for="product_type in productTypes" :key="product_type.id" :value="product_type.id">{{ product_type.name }}</option>
-        </select>
-  
-        <label for="price">Price:</label>
-        <input type="text" id="price" v-model="productPrice" @input="validatePriceInput" />
-  
-        <button type="submit">Add Product</button>
-      </form>
-      <p v-if="successMessage">{{ successMessage }}</p>
-      <p v-if="errorMessage">{{ errorMessage }}</p>
-  
-      <h2>Added Products</h2>
-      <ul>
-        <li v-for="product in products" :key="product.id">
-          {{ product.name }} - {{ getCategoryName(product.category) }} - {{ getProductTypeName(product.product_type) }} - ₹{{ product.price }}
-        </li>
-      </ul>
-    </div>
-  </template>
+  <div class="add-product">
+    <h1>Add Product</h1>
+    <form @submit.prevent="addProduct" class="product-form">
+      <label for="name" class="label">Product Name:</label>
+      <input type="text" id="name" v-model="productName" />
+
+      <label for="category" class="label">Category:</label>
+      <select id="category" v-model="selectedCategory">
+        <option v-for="category in categories" :key="category.id" :value="category.id">{{ category.name }}</option>
+      </select>
+
+      <label for="product_type" class="label">Product Type:</label>
+      <select id="product_type" v-model="selectedType">
+        <option v-for="product_type in productTypes" :key="product_type.id" :value="product_type.id">{{ product_type.name }}</option>
+      </select>
+
+      <label for="price" class="label">Price:</label>
+      <input type="text" id="price" v-model="productPrice" @input="validatePriceInput" />
+
+      <button type="submit">Add Product</button>
+    </form>
+    <p v-if="successMessage" class="success-message">{{ successMessage }}</p>
+    <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
+    <hr />
+
+    <h2>Added Products</h2>
+    <ul class="product-list">
+      <li v-for="product in products" :key="product.id" class="product-item">
+        {{ product.name }} - {{ getCategoryName(product.category) }} - {{ getProductTypeName(product.product_type) }} - ₹{{ product.price }}
+      </li>
+    </ul>
+  </div>
+</template>
   
   <script>
   export default {
@@ -97,7 +98,7 @@
     const response = await fetch("http://127.0.0.1:8000/api/cropsproduct/", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"  // Set the correct content type
+        "Content-Type": "application/json" 
       },
       body: JSON.stringify({
         name: this.productName,
@@ -112,7 +113,7 @@
       this.productName = "";
       this.selectedCategory = null;
       this.selectedType = null;
-      this.productPrice = "";  // Reset productPrice to empty string
+      this.productPrice = ""; 
       this.fetchProducts();
     } else {
       this.errorMessage = "Failed to add product. Please try again.";
@@ -135,6 +136,63 @@
   </script>
   
   <style scoped>
+  .add-product {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .product-form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  .label {
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"], select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  button[type="submit"] {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  .success-message {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .error-message {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .product-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .product-item {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 5px;
+  }
   </style>
 
   

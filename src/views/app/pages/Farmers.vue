@@ -50,6 +50,10 @@
         <p class="info-label">{{ farmer.name }} - {{ farmer.address }}</p>
       </li>
     </ul>
+    <div class="nav-links">
+      <router-link to="/addstock_farmers">Add Stock</router-link>
+    </div>
+
   </div>
 </template>
 
@@ -142,7 +146,7 @@ export default {
 },
 async fetchPanchayatsList() {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/locationspanchayats/'); 
+        const response = await axios.get('http://127.0.0.1:8000/api/locationspanchayats/');     
         this.panchayatsList = response.data;
       } catch (error) {
         console.error('Error fetching Panchayats list:', error);

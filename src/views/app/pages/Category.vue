@@ -1,22 +1,24 @@
 <template>
-    <div>
-      <h1>Add Category</h1>
-      <form @submit.prevent="addCategory">
-        <label for="name">Category Name:</label>
-        <input type="text" id="name" v-model="categoryName" required />
-  
-        <button type="submit">Add Category</button>
-      </form>
-      <p v-if="successMessage">{{ successMessage }}</p>
-      <p v-if="errorMessage">{{ errorMessage }}</p>
-  
-      <h2>Added Categories</h2>
-      <ul>
-        <li v-for="category in categories" :key="category.id">{{ category.name }}</li>
-      </ul>
-    </div>
-  </template>
-  
+  <div class="add-category">
+    <h1>Add Category</h1>
+    <form @submit.prevent="addCategory" class="category-form">
+      <label for="name">Category Name:</label>
+      <input type="text" id="name" v-model="categoryName" required />
+
+      <button type="submit">Add Category</button>
+    </form>
+    <p v-if="successMessage" class="success-message">{{ successMessage }}</p>
+    <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
+    <hr />
+
+    <h2>Added Categories</h2>
+    <ul class="category-list">
+      <li v-for="category in categories" :key="category.id" class="category-item">
+        {{ category.name }}
+      </li>
+    </ul>
+  </div>
+</template>
 
   <script>
   export default {
@@ -68,4 +70,62 @@
     }
   };
   </script>
+  <style scoped>
+  .add-category {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
   
+  .category-form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  .label {
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  button[type="submit"] {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  .success-message {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .error-message {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .category-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .category-item {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 5px;
+  }
+  </style>
