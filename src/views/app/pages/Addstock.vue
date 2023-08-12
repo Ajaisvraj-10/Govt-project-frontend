@@ -31,9 +31,13 @@
       title="Add New Plant"
       @hidden="closeAddPlantModal"
     >
-    <h4>Select Existing Plant:</h4>
+      <h4>Select Existing Plant:</h4>
       <select v-model="selectedExistingPlant">
-        <option v-for="plant in existingPlants" :key="plant.id" :value="plant.id">
+        <option
+          v-for="plant in existingPlants"
+          :key="plant.id"
+          :value="plant.id"
+        >
           {{ plant.name }}
         </option>
       </select>
@@ -41,21 +45,20 @@
     </b-modal>
 
     <b-modal
-  id="quantityModal"
-  title="Edit Plant Products"
-  @hidden="closeQuantityModal"
->
-  <p>{{ selectedPlant.name }}</p>
-  <h4>Edit Products:</h4>
-  <ul>
-    <li v-for="product in selectedPlant.products" :key="product.id">
-      {{ product.name }} - Price: {{ product.price }}
-      <input type="number" v-model="product.quantity" />
-    </li>
-  </ul>
-  <button @click="saveProductsQuantity">Save</button>
-</b-modal>
-
+      id="quantityModal"
+      title="Edit Plant Products"
+      @hidden="closeQuantityModal"
+    >
+      <p>{{ selectedPlant.name }}</p>
+      <h4>Edit Products:</h4>
+      <ul>
+        <li v-for="product in selectedPlant.products" :key="product.id">
+          {{ product.name }} - Price: {{ product.price }}
+          <input type="number" v-model="product.quantity" />
+        </li>
+      </ul>
+      <button @click="saveProductsQuantity">Save</button>
+    </b-modal>
   </div>
 </template>
 
@@ -88,59 +91,64 @@ export default {
   methods: {
     async fetchExistingPlants() {
       try {
-        const response = await axios.get("http://127.0.0.1:8000/api/cropsplant/");
+        const response = await axios.get(
+          "http://127.0.0.1:8000/api/cropsplant/"
+        );
         this.existingPlants = response.data;
       } catch (error) {
         console.error("Error fetching existing plants:", error);
       }
     },
-    
+
     async fetchFarmers() {
       try {
         const response = await axios.get("http://127.0.0.1:8000/api/farmers/");
         this.farmers = response.data;
       } catch (error) {
         console.error("Error fetching farmers:", error);
-      }
+      }  
     },
     async fetchFarmerPlants() {
-  try {
-    if (this.selectedFarmer) {
-      const response = await axios.get(`http://127.0.0.1:8000/api/cropsplant/?farmer=${this.selectedFarmer}`);
-      this.farmerPlants = response.data;
+      try {
+        if (this.selectedFarmer) {
+          const response = await axios.get(
+            `http://127.0.0.1:8000/api/cropsplant/?farmer=${this.selectedFarmer}`
+          );
+          this.farmerPlants = response.data;
 
-      // Fetch and update products' quantities for each plant
-      for (const plant of this.farmerPlants) {
-        const productsResponse = await axios.get(`http://127.0.0.1:8000/api/cropsproduct/?plant=${plant.id}`);
-        const products = productsResponse.data;
+          for (const plant of this.farmerPlants) {
+            const productsResponse = await axios.get(
+              `http://127.0.0.1:8000/api/cropsproduct/?plant=${plant.id}`
+            );
+            const products = productsResponse.data;
+            plant.products = products.map((product) => ({
+              ...product,
+              quantity: 0,
+            }));
+          }
 
-        // Update products' quantities for the plant
-        plant.products = products.map(product => ({
-          ...product,
-          quantity: 0, // Add a quantity property with an initial value of 0
-        }));
+          console.log("Fetched farmer plants:", this.farmerPlants);
+        } else {
+          this.farmerPlants = [];
+        }
+      } catch (error) {
+        console.error("Error fetching farmer plants:", error);
       }
+    },
 
-      console.log('Fetched farmer plants:', this.farmerPlants);
-    } else {
-      this.farmerPlants = [];
-    }
-  } catch (error) {
-    console.error('Error fetching farmer plants:', error);
-  }
-},
-
-async fetchPlantProducts(plantId) {
-    try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/cropsproduct/?plant=${plantId}`);
-      this.selectedPlant.products = response.data.map(product => ({
-        ...product,
-        quantity: 0, // Add a quantity property with an initial value of 0
-      }));
-    } catch (error) {
-      console.error("Error fetching plant products:", error);
-    }
-  },
+    async fetchPlantProducts(plantId) {
+      try {
+        const response = await axios.get(
+          `http://127.0.0.1:8000/api/cropsproduct/?plant=${plantId}`
+        );
+        this.selectedPlant.products = response.data.map((product) => ({
+          ...product,
+          quantity: 0,
+        }));
+      } catch (error) {
+        console.error("Error fetching plant products:", error);
+      }
+    },
 
     openAddPlantModal() {
       this.$bvModal.show("addPlantModal");
@@ -150,59 +158,50 @@ async fetchPlantProducts(plantId) {
       this.newPlantName = "";
     },
     async addPlant() {
-  try {
-    // Fetch the list of categories from the API
-    const response = await axios.get("http://127.0.0.1:8000/api/cropscategory/");
-    const categories = response.data;
-    console.log("Categories:", categories); // Log the categories
+      try {
+        const response = await axios.get(
+          "http://127.0.0.1:8000/api/cropscategory/"
+        );
+        const categories = response.data;
+        console.log("Categories:", categories);
+      } catch (error) {
+        console.error("Error adding plant:", error);
+      }
+    },
 
-    // Rest of the code...
-  } catch (error) {
-    console.error("Error adding plant:", error);
-  }
-},
-
-
-
-
-
-
-openQuantityModal(plant) {
-  this.$bvModal.show("quantityModal");
-  this.selectedPlant.id = plant.id;
-  this.selectedPlant.name = plant.name;
-  this.fetchPlantProducts(plant.id);
-},
-
+    openQuantityModal(plant) {
+      this.$bvModal.show("quantityModal");
+      this.selectedPlant.id = plant.id;
+      this.selectedPlant.name = plant.name;
+      this.fetchPlantProducts(plant.id);
+    },
 
     closeQuantityModal() {
       this.$bvModal.hide("quantityModal");
       this.selectedPlant.id = null;
       this.selectedPlant.name = "";
       this.selectedPlant.quantity = null;
-      
     },
     async saveProductsQuantity() {
-  try {
-    const requestData = this.selectedPlant.products.map(product => ({
-      quantity: product.quantity,
-      crops_in_farmer: this.selectedFarmer,
-      product: product.id,
-    }));
+      try {
+        const requestData = this.selectedPlant.products.map((product) => ({
+          quantity: product.quantity,
+          crops_in_farmer: this.selectedFarmer,
+          product: product.id,
+        }));
 
-    await Promise.all(requestData.map(data =>
-      axios.post(`http://127.0.0.1:8000/api/cropsproduct_stock/`, data)
-    ));
+        await Promise.all(
+          requestData.map((data) =>
+            axios.post(`http://127.0.0.1:8000/api/cropsproduct_stock/`, data)
+          )
+        );
 
-    this.closeQuantityModal();
-    this.fetchFarmerPlants();
-  } catch (error) {
-    console.error('Error updating quantities:', error);
-  }
-},
-
-
-
+        this.closeQuantityModal();
+        this.fetchFarmerPlants();
+      } catch (error) {
+        console.error("Error updating quantities:", error);
+      }
+    },
   },
 };
 </script>

@@ -1,0 +1,51 @@
+.home-page {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/ott/letter-v.png');
+    background-size: cover;
+    filter: blur(10px); 
+  }
+  
+  .content {
+    z-index: 1;
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8); 
+    border-radius: 10px;
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+  }
+  
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  button:hover {
+    background: #0056b3;
+  }

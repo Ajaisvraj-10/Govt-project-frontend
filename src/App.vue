@@ -1,8 +1,9 @@
 <template>
     <div>
+      <!-- <LoginTh /> -->
       <!-- <Hotstar /> -->
     <!-- <Netflix /> -->
-      <Nav></Nav>
+      <!-- <Nav></Nav> -->
       <!-- <Login></Login> -->
       <router-view></router-view>
     </div>
@@ -13,7 +14,9 @@ import Login from '../src/views/app/pages/Login.vue';
 import Nav from './views/app/pages/Nav.vue';
 import Netflix from './views/app/pages/Netflix.vue';
 import Hotstar from './views/app/pages/Hotstar.vue';
-
+import LoginTh from './views/app/pages/LoginTh.vue';
+import Plans from './views/app/pages/Plans.vue'
+import Otthome from './views/app/pages/Otthome.vue'
 
 
 export default {
@@ -22,6 +25,10 @@ export default {
     Nav,
     Netflix,
     Hotstar,
+    LoginTh,
+    Plans,
+    Otthome,
+    
 },
   name: 'App',
 

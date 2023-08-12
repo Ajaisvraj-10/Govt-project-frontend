@@ -6,6 +6,7 @@ import NProgress from "nprogress";
 import Moviedetails from "./views/app/pages/Moviedetails.vue"
 import Hotstar from "./views/app/pages/Hotstar.vue"
 import Addstock from "./views/app/pages/Addstock"
+import LoginTh from "./views/app/pages/LoginTh"
 // import authenticate from "./auth/authenticate";
 Vue.use(Router);
 
@@ -27,7 +28,7 @@ const routes = [
       {
         path: "/",
         component: () => import("./views/app/pages"),
-        redirect: "login",
+        redirect: "logintheme",
         children: [
      
           {
@@ -55,11 +56,11 @@ const routes = [
           //   component: () => import("./views/app/pages/Blogs"),
 
           // },
-          {
-            path: "login",
-            component: () => import("./views/app/pages/Login"),
+          // {
+          //   path: "login",
+          //   component: () => import("./views/app/pages/Login"),
 
-          },
+          // },
           {
             path: "home",
             component: () => import("./views/app/pages/Home"),
@@ -128,11 +129,22 @@ const routes = [
             name  : 'Addstock',
             component: () => import("./views/app/pages/Addstock"),
           },
+          {
+            path: "logintheme",
+            name  : 'LoginTh',
+            component: () => import("./views/app/pages/LoginTh"),
+          },
+          {
+            path: "plans",
+            name  : 'Plans',
+            component: () => import("./views/app/pages/Plans"),
+          },
+          {
+            path: "otthome",
+            name  : 'Otthome',
+            component: () => import("./views/app/pages/Otthome"),
+          },
          
-        
-          
-         
-          
           
         ]
       },
