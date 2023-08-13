@@ -1,53 +1,63 @@
 <template>
-    <div class="main-div">
-      <a href="https://front.codes/" class="logo" target="_blank">
-      </a>
-  
-      <div class="section">
-        <div class="container">
-          <div class="row full-height justify-content-center">
-            <div class="col-12 text-center align-self-center py-5">
-              <div class="section pb-5 pt-5 pt-sm-2 text-center">
-                <h6 class="mb-0 pb-3">
-                  <span>Log In </span>
-                </h6>
-                <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
-                <label for="reg-log"></label>
-                <div class="card-3d-wrap mx-auto">
-                  <div class="card-3d-wrapper">
-                    <div class="card-front">
-                      <div class="center-wrap">
-                        <div class="section text-center">
-                          <h4 class="mb-4 pb-3">Log In</h4>
-                          <div class="form-group">
-                            <input type="email" name="logemail" class="form-style" placeholder="Your Email" id="logemail" autocomplete="off">
-                            <i class="input-icon uil uil-at"></i>
-                          </div>
-                          <div class="form-group mt-2">
-                            <input type="password" name="logpass" class="form-style" placeholder="Your Password" id="logpass" autocomplete="off">
-                            <i class="input-icon uil uil-lock-alt"></i>
-                          </div>
-                          <a href="#" class="btn mt-4">submit</a>
-                          <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a></p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+  <section class="login-section">
+    <div class="form-box">
+      <div class="form-value">
+        <div class="form-login">
+        <form>
+          <div><h2 class="login-h">Login</h2></div>
+          <div class="inputbox">
+            <ion-icon name="mail-outline"></ion-icon>
+            <input type="email" required>
+            <label for="">Email</label>
           </div>
-        </div>
+          <div class="inputbox">
+            <ion-icon name="lock-closed-outline"></ion-icon>
+            <input type="password"  required>
+            <label for="">Password</label>
+          </div>
+          <div class="forget">
+            <label>
+              <input type="checkbox"> Remember me
+            </label>
+            <label>
+              <a href="#">Forgot password?</a>
+            </label>
+          </div>
+          <button class="login-btn">Log in</button>
+          <div class="register">
+            <p>Don't have an account? <a href="#">Register</a></p>
+          </div>
+        </form>
+      </div>
       </div>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    
-  };
-  </script>
-  
-  <style scoped>
-  @import "./style/loginth\ style.css";
-  </style>
+  </section>
+</template>
+
+<!-- <script>
+// import { IonIcon } from "vue-ionicons"; // Import IonIcon component
+
+export default {
+  components: {
+    IonIcon // Register IonIcon component
+  },
+  data() {
+    return {
+      email: "",
+      password: "",
+      remember: false
+    };
+  },
+  methods: {
+    login() {
+      // Implement your login logic here
+      console.log("Logging in...");
+    }
+  }
+};
+</script> -->
+
+<style scoped>
+@import "./style/loginth\ style.css";
+
+</style>

@@ -32,6 +32,7 @@
   }
   
   .plan-options {
+    height: 630px;
     display: flex;
     justify-content: center;
   }
@@ -39,9 +40,9 @@
   .plan-option {
     padding: 20px;
     margin: 0 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background: #ffffff1a;
+    border: 2px solid #f60000;
+    border-radius: 10px;
+    background: #ebebebad;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
   }
@@ -52,16 +53,39 @@
   
   button {
     padding: 10px 20px;
-    background: #007BFF;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s;
+    
   }
-  
-  button:hover {
-    background: #0056b3;
+  .slct-btn{
+    border-radius: 30px;
+    width: 210px;
+    margin-top: 280px;
+    background: #dd5b5b;
   }
-
-  
+  .slct-btn:hover{
+    background: #ff0000;
+  }
+  .recomd-plan{
+    padding-top: 2px;
+    border-radius: 9px;
+    height: 30px;
+    background-color: red;
+    margin-top: -21px;
+    color: white;
+    font-size: initial;
+    font-weight: 700; 
+  }
+  .learn-more{
+    margin-top: 15px;
+    text-decoration: underline; 
+    color: black;
+  }
+  .price{
+    color: black;
+    font-size: xx-large;
+    font-weight: 700;
+  }
