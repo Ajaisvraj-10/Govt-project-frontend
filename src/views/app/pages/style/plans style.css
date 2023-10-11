@@ -19,12 +19,14 @@
     filter: blur(20px); 
   }
   
-  .content {
+  .content1 {
     z-index: 1;
     text-align: center;
     padding: 20px;
     background: rgb(255 255 255 / 38%);
     border-radius: 10px;
+    margin-top: -40px;
+
   }
   
   h2 {
@@ -32,17 +34,38 @@
   }
   
   .plan-options {
-    height: 630px;
+    height: 660px;
     display: flex;
     justify-content: center;
   }
   
   .plan-option {
+    width: 270px;
     padding: 20px;
     margin: 0 10px;
     border: 2px solid #f60000;
     border-radius: 10px;
-    background: #ebebebad;
+    background: #ffffffd4;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+  }
+  .plan-option1 {
+    width: 270px;
+    padding: 20px;
+    margin: 0 10px;
+    border: 5px solid #0000000d;
+    border-radius: 10px;
+    background: #ffffffd4;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+  }
+  .plan-option3 {
+    width: 270px;
+    padding: 20px;
+    margin: 0 10px;
+    border: 5px solid #0000000d;
+    border-radius: 10px;
+    background: #ffffffd4;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
   }
@@ -62,8 +85,8 @@
   }
   .slct-btn{
     border-radius: 30px;
-    width: 210px;
-    margin-top: 280px;
+    width: 220px;
+    margin-top: 165px;
     background: #dd5b5b;
   }
   .slct-btn:hover{
@@ -89,3 +112,19 @@
     font-size: xx-large;
     font-weight: 700;
   }
+.access{
+  color: black;
+  font-weight: 600;
+}
+.price-main{
+  color: red;
+  font-size: revert;
+  font-weight: 600;
+}
+.points{
+  text-align: center;
+}
+.decor{
+  text-decoration: line-through;
+  color: black;
+}

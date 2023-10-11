@@ -85,7 +85,7 @@ export default {
           poster: "/hotstar/most-viewed16.jpg",
           title: "Guardians of Galaxy",
         },
-        // Add more movie objects
+        
       ]
     };
   },

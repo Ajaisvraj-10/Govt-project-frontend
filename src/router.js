@@ -144,7 +144,6 @@ const routes = [
             name  : 'Otthome',
             component: () => import("./views/app/pages/Otthome"),
           },
-         
           
         ]
       },

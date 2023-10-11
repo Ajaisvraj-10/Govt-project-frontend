@@ -215,3 +215,4 @@ export default {
 <style scoped>
 @import "./style/hotstar\ style.css";
 </style>
+  

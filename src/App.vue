@@ -17,6 +17,9 @@ import Hotstar from './views/app/pages/Hotstar.vue';
 import LoginTh from './views/app/pages/LoginTh.vue';
 import Plans from './views/app/pages/Plans.vue'
 import Otthome from './views/app/pages/Otthome.vue'
+import Youtube from './views/app/pages/Youtube.vue';
+import Youtubedtl from './views/app/pages/Youtubedtl.vue'
+
 
 
 export default {
@@ -28,6 +31,8 @@ export default {
     LoginTh,
     Plans,
     Otthome,
+    Youtube,
+    Youtubedtl
     
 },
   name: 'App',
